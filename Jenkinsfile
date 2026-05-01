@@ -2,7 +2,8 @@ pipeline {
 	agent any
 	
 	environment {
-		DOCKER_IMAGE = 'hello-world-java'
+		DOCKER_IMAGE = 'hello-world-java-1'
+		DOCKER_TAG = '1.0'
 	}
 	
 	stages {
