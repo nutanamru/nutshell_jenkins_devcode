@@ -3,7 +3,7 @@ pipeline {
 	
 	environment {
 		DOCKER_IMAGE = 'hello-world-java'
-		IMAGE_TAG = '1.0'
+		IMAGE_TAG = 'latest'
 	}
 	
 	stages {
