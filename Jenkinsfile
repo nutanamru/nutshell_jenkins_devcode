@@ -3,6 +3,7 @@ pipeline {
 	
 	environment {
 		DOCKER_IMAGE = 'hello-world-java'
+		IMAGE_TAG = '1.0'
 	}
 	
 	stages {
@@ -23,6 +24,15 @@ pipeline {
 				}
 			}
 		}
+
+		stage('push to deockerhub') {
+			steps {
+				script {
+					sh "docker push ${DOCKER_IMAGE}:${IMAGE_TAG}"
+				}
+			}
+		}
+ 
 	}
 
 
