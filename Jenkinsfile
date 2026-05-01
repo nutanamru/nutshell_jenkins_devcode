@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	
 	environment {
-		DOCKER_IMAGE = 'hello-world-java:latest'
+		DOCKER_IMAGE = 'hello-world-java'
 	}
 	
 	stages {
