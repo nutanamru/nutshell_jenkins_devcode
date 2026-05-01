@@ -40,6 +40,15 @@ pipeline {
 				}
 			}
 		}
+
+		stage('kubernetes deployment') {
+			steps {
+				script {
+					sh "kubectl apply -f deployment.yml"
+					sh "kubectl apply -f service.yml"
+				}
+			}
+		}
  
 	}
 
