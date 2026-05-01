@@ -34,7 +34,7 @@ pipeline {
 						sh """
 						echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 						echo "Login Sucessfull on Docker Hub"
-						docker push ${env.DOCKER_IMAGE}:${env.IMAGE_TAG}"
+						docker push ${DOCKER_IMAGE}:${IMAGE_TAG}"
 						"""
 					}
 				}
