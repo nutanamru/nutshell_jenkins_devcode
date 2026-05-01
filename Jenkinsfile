@@ -1,6 +1,10 @@
 pipeline {
 	agent any
 	
+	environment {
+		DOCKER_IMAGE = 'hello-world-java:latest'
+	}
+	
 	stages {
 		stage('Checkout') {
 			steps {
@@ -8,20 +12,26 @@ pipeline {
 			}
 		}
 
-		stage('run java code') {
+		stage('Docker Build') {
 			steps {
-				sh 'javac HelloWorld.java'
-				sh 'java HelloWorld'
+				script {
+					if (fileExits('Dockerfile')) {
+						sh "docker build -t ${env.DOCKER_IMAGE} ."
+					} else {
+						error "Docker file not found"
+					}
+				}
 			}
 		}
 	}
 
+
 	post {
 		success {
-			echo 'Java code build successfully.'
+			echo 'Docker image build successfully.'
 		}
 		failure {
-			echo 'Java code build failed.'
+			echo 'Docker image build failed.'
 		}
 	}
 }
