@@ -3,7 +3,7 @@ pipeline {
 	
 	environment {
 		DOCKER_IMAGE = 'hello-world-java-1'
-		DOCKER_TAG = '1.0'
+		IMAGE_TAG = '1.0'
 	}
 	
 	stages {
@@ -29,8 +29,8 @@ pipeline {
 			steps {
 				script {
 					withCredentials([usernamePassword(credentialsId: 'my-docker-hub-credentials-id',
-									usernameVariable: 'nutanamru52',
-									passwordVariable: 'Tosti@052')]) {
+									usernameVariable: 'DOCKER_USERNAME',
+									passwordVariable: 'DOCKER_PASSWORD')]) {
 						sh """
 						echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 						echo "Login Sucessfull on Docker Hub"
