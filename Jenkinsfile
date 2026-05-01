@@ -33,7 +33,7 @@ pipeline {
 									passwordVariable: 'Tosti@052')]) {
 						sh """
 						echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-						docker push ${DOCKER_IMAGE}:${IMAGE_TAG}"
+						docker push ${env.DOCKER_IMAGE}:${env.IMAGE_TAG}"
 						"""
 					}
 				}
